@@ -1,0 +1,1964 @@
+[
+    {
+        "id": "7e17024ef9158e0d",
+        "type": "tab",
+        "label": "10_7_22",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "928c0feb5601d623",
+        "type": "mqtt in",
+        "z": "7e17024ef9158e0d",
+        "name": "",
+        "topic": "test",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "4595cc1a3a9eb162",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 130,
+        "y": 100,
+        "wires": [
+            [
+                "40159f16949aca66",
+                "8e6a953b2d29a5b4",
+                "bb183573bb8dbc32"
+            ]
+        ]
+    },
+    {
+        "id": "40159f16949aca66",
+        "type": "debug",
+        "z": "7e17024ef9158e0d",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 570,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "8888bf5a374816b7",
+        "type": "debug",
+        "z": "7e17024ef9158e0d",
+        "name": "output",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 610,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "3d698bea502bae05",
+        "type": "function",
+        "z": "7e17024ef9158e0d",
+        "name": "timeConvert",
+        "func": "if ( !msg.timestamp ) msg.timestamp = Math.round(+new Date());\n\nvar dt = new Date(msg.timestamp);\nvar msg = {\n\t\n\t'día':\t\tdt.getDate(),\n\t'mes':\tdt.getMonth() + 1,\n\t'año':\t\tdt.getFullYear(),\n\t'hours':\tdt.getHours(),\n\t'mins':\t\tdt.getMinutes(),\n\t'msecs':\tdt.getMilliseconds()\n}\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 390,
+        "y": 440,
+        "wires": [
+            [
+                "8888bf5a374816b7"
+            ]
+        ]
+    },
+    {
+        "id": "1660fc511489bdd3",
+        "type": "inject",
+        "z": "7e17024ef9158e0d",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 160,
+        "y": 400,
+        "wires": [
+            [
+                "3d698bea502bae05",
+                "5a9c448ae1f0f290"
+            ]
+        ]
+    },
+    {
+        "id": "fe2b2799c17cfd42",
+        "type": "inject",
+        "z": "7e17024ef9158e0d",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payloadType": "date",
+        "x": 140,
+        "y": 260,
+        "wires": [
+            [
+                "da615f45c1b57ef7"
+            ]
+        ]
+    },
+    {
+        "id": "5a9c448ae1f0f290",
+        "type": "function",
+        "z": "7e17024ef9158e0d",
+        "name": "timeConvert",
+        "func": "if ( !msg.timestamp ) msg.timestamp = Math.round(+new Date());\n\nvar dt = new Date(msg.timestamp);\nvar msg = {\n\t\n\t'día':\t\tdt.getDate(),\n\t'mes':\tdt.getMonth() + 1,\n\t'año':\t\tdt.getFullYear(),\n\t'hours':\tdt.getHours(),\n\t'mins':\t\tdt.getMinutes(),\n\t'msecs':\tdt.getMilliseconds()\n}\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 390,
+        "y": 400,
+        "wires": [
+            [
+                "ab42ef59df0be17e"
+            ]
+        ]
+    },
+    {
+        "id": "ab42ef59df0be17e",
+        "type": "debug",
+        "z": "7e17024ef9158e0d",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 600,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "6088a42ca6cff715",
+        "type": "comment",
+        "z": "7e17024ef9158e0d",
+        "name": "Ojo con conf. debug",
+        "info": "\"Estos debug config. como \"msg completo objeto\"",
+        "x": 610,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "da615f45c1b57ef7",
+        "type": "function",
+        "z": "7e17024ef9158e0d",
+        "name": "",
+        "func": "var count=flow.get(\"count\")||0;\n\nmsg.payload = [\n    \n    {\n        \"Marca/Modelo\": \"SLE5000\",\n        \"Número aparato\": \"17\",\n        \"Sector\": \"Neo\",\n        \"Fecha\": \"prueba\",\n        \"timestamp\": new Date(msg.payload).toLocaleString(),\n        \"Vector\": \"1\",\n        \"savedCount\":flow.get(\"count\")\n    \n    },\n    {\n        \"Marca/Modelo\": \"Avea\",\n        \"Número aparato\": \"89\",\n        \"Sector\": \"uci\",\n        \"Fecha\": \"12/08/2017\",\n        \"timestamp\": new Date(msg.payload).toLocaleString() ,\n        \"Vector\": \"33,2,1\",\n        \"savedCount\":flow.get(\"count\")\n        \n    }\n]\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 360,
+        "y": 260,
+        "wires": [
+            [
+                "eca5f3333dc61398"
+            ]
+        ]
+    },
+    {
+        "id": "eca5f3333dc61398",
+        "type": "debug",
+        "z": "7e17024ef9158e0d",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 570,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "a087df56c02ed436",
+        "type": "comment",
+        "z": "7e17024ef9158e0d",
+        "name": "",
+        "info": "",
+        "x": 340,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "9b38de38e2494cf1",
+        "type": "function",
+        "z": "7e17024ef9158e0d",
+        "name": "contexto nodo",
+        "func": "var vector=msg.payload;\nmsg.vector=vector;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 400,
+        "y": 560,
+        "wires": [
+            [
+                "45b0282fef7754a5"
+            ]
+        ]
+    },
+    {
+        "id": "ea3d3373f1f0750f",
+        "type": "inject",
+        "z": "7e17024ef9158e0d",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "2,45,66,5,6,88",
+        "payloadType": "str",
+        "x": 180,
+        "y": 560,
+        "wires": [
+            [
+                "9b38de38e2494cf1"
+            ]
+        ]
+    },
+    {
+        "id": "45b0282fef7754a5",
+        "type": "debug",
+        "z": "7e17024ef9158e0d",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 590,
+        "y": 560,
+        "wires": []
+    },
+    {
+        "id": "255238e104878183",
+        "type": "comment",
+        "z": "7e17024ef9158e0d",
+        "name": "crea variable node",
+        "info": "",
+        "x": 400,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "c0abd9c4078efbf3",
+        "type": "function",
+        "z": "7e17024ef9158e0d",
+        "name": "contexto flow",
+        "func": "var vector=msg.payload;\nflow.set(\"contextoflujo\",vector);\nmsg.pyload=flow.get(\"contextoflujo\");\nreturn msg;",
+        "outputs": 5,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 390,
+        "y": 620,
+        "wires": [
+            [
+                "3db7e41a5d62ef38"
+            ],
+            [
+                "086f18627a5a7a1b"
+            ],
+            [],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "cbf6503007c0519e",
+        "type": "inject",
+        "z": "7e17024ef9158e0d",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "2,45,66,5,6,88",
+        "payloadType": "str",
+        "x": 180,
+        "y": 620,
+        "wires": [
+            [
+                "c0abd9c4078efbf3"
+            ]
+        ]
+    },
+    {
+        "id": "3db7e41a5d62ef38",
+        "type": "debug",
+        "z": "7e17024ef9158e0d",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 590,
+        "y": 600,
+        "wires": []
+    },
+    {
+        "id": "211fa96567093725",
+        "type": "function",
+        "z": "7e17024ef9158e0d",
+        "name": "contexto global",
+        "func": "var vector=msg.payload;\nglobal.set(\"contextoglobal\",vector);\nmsg.payload=global.get(\"contextoglobal\");\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 300,
+        "y": 1060,
+        "wires": [
+            [
+                "0efbf8d953e56d9e",
+                "f747e87021c88e35"
+            ]
+        ]
+    },
+    {
+        "id": "4051952471214bfd",
+        "type": "inject",
+        "z": "7e17024ef9158e0d",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "2,45,66,5,6,88",
+        "payloadType": "str",
+        "x": 180,
+        "y": 680,
+        "wires": [
+            [
+                "f2af95d0571930aa"
+            ]
+        ]
+    },
+    {
+        "id": "086f18627a5a7a1b",
+        "type": "debug",
+        "z": "7e17024ef9158e0d",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 590,
+        "y": 640,
+        "wires": []
+    },
+    {
+        "id": "f2af95d0571930aa",
+        "type": "split",
+        "z": "7e17024ef9158e0d",
+        "name": "",
+        "splt": ",",
+        "spltType": "str",
+        "arraySplt": 1,
+        "arraySpltType": "len",
+        "stream": true,
+        "addname": "",
+        "x": 370,
+        "y": 700,
+        "wires": [
+            [
+                "89334e13e58bd488"
+            ]
+        ]
+    },
+    {
+        "id": "22e95813582f8852",
+        "type": "debug",
+        "z": "7e17024ef9158e0d",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 730,
+        "y": 720,
+        "wires": []
+    },
+    {
+        "id": "89334e13e58bd488",
+        "type": "function",
+        "z": "7e17024ef9158e0d",
+        "name": "contexto global",
+        "func": "var msg1={payload:\"a\"};\nvar msg2={payload:\"b\"};\nvar msg3={payload:\"c\"};\nvar msg4={payload:\"d\"};\nvar msg5={payload:\"e\"};\n\n\nreturn [msg1, msg2, msg3, msg4, msg5];",
+        "outputs": 5,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 560,
+        "y": 720,
+        "wires": [
+            [
+                "22e95813582f8852"
+            ],
+            [],
+            [],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "0efbf8d953e56d9e",
+        "type": "function",
+        "z": "7e17024ef9158e0d",
+        "name": "",
+        "func": "var str = msg.payload;\nvar parts = str.split(\",\");\n\nflow.set(\"contextoflujopartes\",parts);\nglobal.set(\"nombreequipo\",parts[0]);\n\n\nmsg.payload = {\n  name: parts[0],\n  item1: parseInt(parts[1]),\n  item2: parseInt(parts[2]),\n  item3: parseInt(parts[3]),\n  item4: parseInt(parts[4]),\n  item5: parseInt(parts[5]), \n  item6: parseInt(parts[6]),\n  item7: parseInt(parts[7]),\n  item8: parseInt(parts[8]),  \n  status: parts[9],\n}\n\n\n\n///var primero=item1;\n//msg.payload=flow.get[\"nombreequipo\"];\nreturn msg;",
+        "outputs": 10,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 440,
+        "y": 860,
+        "wires": [
+            [
+                "f2807ac89f14d628"
+            ],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "f2807ac89f14d628",
+        "type": "debug",
+        "z": "7e17024ef9158e0d",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 590,
+        "y": 800,
+        "wires": []
+    },
+    {
+        "id": "2c8cf6b0554bc829",
+        "type": "mqtt in",
+        "z": "7e17024ef9158e0d",
+        "name": "",
+        "topic": "test",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "4595cc1a3a9eb162",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 70,
+        "y": 1320,
+        "wires": [
+            [
+                "7fec5fc42b7ee3d9",
+                "93a49dec83d87697",
+                "1ff40b8eca6f70f2",
+                "4824b081991be2fe"
+            ]
+        ]
+    },
+    {
+        "id": "95407c4a4eb8c196",
+        "type": "function",
+        "z": "7e17024ef9158e0d",
+        "name": "equipo",
+        "func": "//var separado=global.get[\"contextoglobal\"];\n\n//contextoglobal.split\n\nvar mensaje = msg.payload;\nvar partesseparadas = mensaje.split(\",\");\n\nmsg.payload=partesseparadas[0];\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 570,
+        "y": 960,
+        "wires": [
+            [
+                "b6c1c3a655a30509",
+                "cdc9896ba9ad50c1"
+            ]
+        ]
+    },
+    {
+        "id": "17390699f0167031",
+        "type": "function",
+        "z": "7e17024ef9158e0d",
+        "name": "valor1",
+        "func": "var mensaje = msg.payload;\nvar partesseparadas = mensaje.split(\",\");\n\nmsg.payload=parseInt(partesseparadas[1]);\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 550,
+        "y": 1040,
+        "wires": [
+            [
+                "b6c1c3a655a30509",
+                "d1127e30604477d2"
+            ]
+        ]
+    },
+    {
+        "id": "5224c5438db2bf87",
+        "type": "function",
+        "z": "7e17024ef9158e0d",
+        "name": "valor2",
+        "func": "var mensaje = msg.payload;\nvar partesseparadas = mensaje.split(\",\");\n\nmsg.payload=partesseparadas[2];\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 550,
+        "y": 1080,
+        "wires": [
+            [
+                "b6c1c3a655a30509",
+                "d1127e30604477d2"
+            ]
+        ]
+    },
+    {
+        "id": "a7d31296f2c02f14",
+        "type": "function",
+        "z": "7e17024ef9158e0d",
+        "name": "fecha y horario",
+        "func": "//var mensaje = msg.payload;\n//var partesseparadas = mensaje.split(\",\");\n\n//msg.payload=partesseparadas[2];\n//var msg = new Date(msg.timestamp);\n\n    //  msg.payload= new Date(msg.payload).toLocaleString();\n      \n  //    return msg;\nif ( !msg.timestamp ) msg.timestamp = Math.round(+new Date());\n\n msg.payload= new Date(msg.timestamp).toLocaleString();\n\n/*\n  var dt = new Date(msg.timestamp);\nvar msg = {\n\t\n\t'día':\t\tdt.getDate(),\n\t'mes':\tdt.getMonth() + 1,\n\t'año':\t\tdt.getFullYear(),\n\t'hours':\tdt.getHours(),\n\t'mins':\t\tdt.getMinutes(),\n\t'msecs':\tdt.getMilliseconds()\n}*/\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 540,
+        "y": 1000,
+        "wires": [
+            [
+                "b6c1c3a655a30509",
+                "6afc3d853c9bac4a"
+            ]
+        ]
+    },
+    {
+        "id": "b6c1c3a655a30509",
+        "type": "join",
+        "z": "7e17024ef9158e0d",
+        "name": "",
+        "mode": "custom",
+        "build": "array",
+        "property": "",
+        "propertyType": "full",
+        "key": "topic",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "accumulate": false,
+        "timeout": "",
+        "count": "42",
+        "reduceRight": false,
+        "reduceExp": "",
+        "reduceInit": "",
+        "reduceInitType": "",
+        "reduceFixup": "",
+        "x": 730,
+        "y": 1100,
+        "wires": [
+            [
+                "37617fa3d1d44a32"
+            ]
+        ]
+    },
+    {
+        "id": "37617fa3d1d44a32",
+        "type": "debug",
+        "z": "7e17024ef9158e0d",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 770,
+        "y": 1040,
+        "wires": []
+    },
+    {
+        "id": "c3924e1cb0783966",
+        "type": "change",
+        "z": "7e17024ef9158e0d",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "condicion",
+                "pt": "flow",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 290,
+        "y": 1420,
+        "wires": [
+            [
+                "0d77c12e7af18b39"
+            ]
+        ]
+    },
+    {
+        "id": "2dfc8e6e2c5ab6d5",
+        "type": "debug",
+        "z": "7e17024ef9158e0d",
+        "name": "salida 1",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 620,
+        "y": 900,
+        "wires": []
+    },
+    {
+        "id": "c8db8a72f18309c5",
+        "type": "debug",
+        "z": "7e17024ef9158e0d",
+        "name": "salida 2",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 300,
+        "y": 1300,
+        "wires": []
+    },
+    {
+        "id": "f747e87021c88e35",
+        "type": "switch",
+        "z": "7e17024ef9158e0d",
+        "name": "",
+        "property": "condicion",
+        "propertyType": "flow",
+        "rules": [
+            {
+                "t": "gte",
+                "v": "41",
+                "vt": "num"
+            },
+            {
+                "t": "lt",
+                "v": "41",
+                "vt": "num"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 370,
+        "y": 1180,
+        "wires": [
+            [
+                "2dfc8e6e2c5ab6d5",
+                "95407c4a4eb8c196",
+                "a7d31296f2c02f14",
+                "17390699f0167031",
+                "5224c5438db2bf87",
+                "d62f9ab503c8df5c",
+                "98d0d3b2a879e393",
+                "e6e03265aeeccca6",
+                "eada00d8ceeb6a93",
+                "73b71b9df6555645",
+                "770ff45684c07f34",
+                "e4a8193381570bdc",
+                "67c0645d95c2c040",
+                "0c12691d3ea38d3d",
+                "839a1aaf36b5c244",
+                "5021662a29420717",
+                "3708311b7317d2d7",
+                "4d94ce65f6f540ce",
+                "2adc735c58811a97",
+                "34085f49bd805681",
+                "b891747f2270e0c2",
+                "f91367559022d50f",
+                "e0ccb39971147f5e",
+                "e11dab61ad9bf3e8",
+                "4831badaa423f38d",
+                "8e68a576cdf8ad94",
+                "23fe019d2a778cad",
+                "9d062d351b88a7db",
+                "ced19b618eddd0bd",
+                "6c86d69b7240a80b",
+                "bbd02139f9407ab6",
+                "234fd110c0c59d67",
+                "f5e486dd05407b58",
+                "a17401f994b0ca5d",
+                "90e68f847a9f9dee",
+                "35f9677a1db5be86",
+                "40bbcb82da37b808",
+                "196211021d1b069f",
+                "973def211a322452",
+                "4bcc03cc48c05383",
+                "aede3efabdba1767",
+                "b6d18059d81347f7",
+                "a69b710b413ca2b9"
+            ],
+            [
+                "ccd12909b66cc0a4"
+            ]
+        ]
+    },
+    {
+        "id": "4e2c984523d47ab1",
+        "type": "comment",
+        "z": "7e17024ef9158e0d",
+        "name": "condiciones switch",
+        "info": "",
+        "x": 350,
+        "y": 1380,
+        "wires": []
+    },
+    {
+        "id": "ccd12909b66cc0a4",
+        "type": "function",
+        "z": "7e17024ef9158e0d",
+        "name": "mensaje falla",
+        "func": "\nmsg.payload=\"Falla\"\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 310,
+        "y": 1240,
+        "wires": [
+            [
+                "c8db8a72f18309c5"
+            ]
+        ]
+    },
+    {
+        "id": "0d77c12e7af18b39",
+        "type": "debug",
+        "z": "7e17024ef9158e0d",
+        "name": "cantidad partes",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 280,
+        "y": 1480,
+        "wires": []
+    },
+    {
+        "id": "7fec5fc42b7ee3d9",
+        "type": "function",
+        "z": "7e17024ef9158e0d",
+        "name": "",
+        "func": "\nvar mensaje = msg.payload;\nvar elementosmensaje = mensaje.split(\",\");\n\nvar cantidadelementosmensaje = elementosmensaje.length;\n\nmsg.payload=cantidadelementosmensaje;\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 100,
+        "y": 1420,
+        "wires": [
+            [
+                "c3924e1cb0783966",
+                "fab89aeae407f2a1"
+            ]
+        ]
+    },
+    {
+        "id": "93a49dec83d87697",
+        "type": "delay",
+        "z": "7e17024ef9158e0d",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "1",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 120,
+        "y": 1060,
+        "wires": [
+            [
+                "211fa96567093725"
+            ]
+        ]
+    },
+    {
+        "id": "9f60230e9630f84f",
+        "type": "comment",
+        "z": "7e17024ef9158e0d",
+        "name": "cant. elementos mensaje",
+        "info": "",
+        "x": 110,
+        "y": 1380,
+        "wires": []
+    },
+    {
+        "id": "e6e03265aeeccca6",
+        "type": "function",
+        "z": "7e17024ef9158e0d",
+        "name": "valor 3",
+        "func": "var mensaje = msg.payload;\nvar partesseparadas = mensaje.split(\",\");\n\nmsg.payload=partesseparadas[3];\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 550,
+        "y": 1120,
+        "wires": [
+            [
+                "b6c1c3a655a30509",
+                "d1127e30604477d2"
+            ]
+        ]
+    },
+    {
+        "id": "eada00d8ceeb6a93",
+        "type": "function",
+        "z": "7e17024ef9158e0d",
+        "name": "valor 4",
+        "func": "\nvar mensaje = msg.payload;\nvar partesseparadas = mensaje.split(\",\");\n\nmsg.payload=partesseparadas[4];\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 550,
+        "y": 1160,
+        "wires": [
+            [
+                "b6c1c3a655a30509",
+                "d1127e30604477d2"
+            ]
+        ]
+    },
+    {
+        "id": "73b71b9df6555645",
+        "type": "function",
+        "z": "7e17024ef9158e0d",
+        "name": "valor 5",
+        "func": "var mensaje = msg.payload;\nvar partesseparadas = mensaje.split(\",\");\n\nmsg.payload=partesseparadas[5];\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 550,
+        "y": 1200,
+        "wires": [
+            [
+                "b6c1c3a655a30509"
+            ]
+        ]
+    },
+    {
+        "id": "770ff45684c07f34",
+        "type": "function",
+        "z": "7e17024ef9158e0d",
+        "name": "valor 6",
+        "func": "var mensaje = msg.payload;\nvar partesseparadas = mensaje.split(\",\");\n\nmsg.payload=partesseparadas[6];\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 550,
+        "y": 1240,
+        "wires": [
+            [
+                "b6c1c3a655a30509"
+            ]
+        ]
+    },
+    {
+        "id": "e4a8193381570bdc",
+        "type": "function",
+        "z": "7e17024ef9158e0d",
+        "name": "valor 7",
+        "func": "var mensaje = msg.payload;\nvar partesseparadas = mensaje.split(\",\");\n\nmsg.payload=partesseparadas[7];\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 550,
+        "y": 1280,
+        "wires": [
+            [
+                "b6c1c3a655a30509"
+            ]
+        ]
+    },
+    {
+        "id": "67c0645d95c2c040",
+        "type": "function",
+        "z": "7e17024ef9158e0d",
+        "name": "valor 8",
+        "func": "var mensaje = msg.payload;\nvar partesseparadas = mensaje.split(\",\");\n\nmsg.payload=partesseparadas[8];\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 550,
+        "y": 1320,
+        "wires": [
+            [
+                "b6c1c3a655a30509"
+            ]
+        ]
+    },
+    {
+        "id": "0c12691d3ea38d3d",
+        "type": "function",
+        "z": "7e17024ef9158e0d",
+        "name": "valor 9",
+        "func": "var mensaje = msg.payload;\nvar partesseparadas = mensaje.split(\",\");\n\nmsg.payload=partesseparadas[9];\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 550,
+        "y": 1360,
+        "wires": [
+            [
+                "b6c1c3a655a30509"
+            ]
+        ]
+    },
+    {
+        "id": "4d94ce65f6f540ce",
+        "type": "function",
+        "z": "7e17024ef9158e0d",
+        "name": "valor 10",
+        "func": "var mensaje = msg.payload;\nvar partesseparadas = mensaje.split(\",\");\n\nmsg.payload=partesseparadas[10];\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 540,
+        "y": 1400,
+        "wires": [
+            [
+                "b6c1c3a655a30509"
+            ]
+        ]
+    },
+    {
+        "id": "98d0d3b2a879e393",
+        "type": "function",
+        "z": "7e17024ef9158e0d",
+        "name": "valor 11",
+        "func": "var mensaje = msg.payload;\nvar partesseparadas = mensaje.split(\",\");\n\nmsg.payload=partesseparadas[11];\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 540,
+        "y": 1440,
+        "wires": [
+            [
+                "b6c1c3a655a30509"
+            ]
+        ]
+    },
+    {
+        "id": "d62f9ab503c8df5c",
+        "type": "function",
+        "z": "7e17024ef9158e0d",
+        "name": "valor 12",
+        "func": "var mensaje = msg.payload;\nvar partesseparadas = mensaje.split(\",\");\n\nmsg.payload=partesseparadas[12];\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 540,
+        "y": 1480,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "2adc735c58811a97",
+        "type": "function",
+        "z": "7e17024ef9158e0d",
+        "name": "valor 13",
+        "func": "var mensaje = msg.payload;\nvar partesseparadas = mensaje.split(\",\");\n\nmsg.payload=partesseparadas[13];\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 540,
+        "y": 1520,
+        "wires": [
+            [
+                "b6c1c3a655a30509"
+            ]
+        ]
+    },
+    {
+        "id": "34085f49bd805681",
+        "type": "function",
+        "z": "7e17024ef9158e0d",
+        "name": "valor 14",
+        "func": "var mensaje = msg.payload;\nvar partesseparadas = mensaje.split(\",\");\n\nmsg.payload=partesseparadas[14];\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 540,
+        "y": 1560,
+        "wires": [
+            [
+                "b6c1c3a655a30509"
+            ]
+        ]
+    },
+    {
+        "id": "b891747f2270e0c2",
+        "type": "function",
+        "z": "7e17024ef9158e0d",
+        "name": "valor 15",
+        "func": "var mensaje = msg.payload;\nvar partesseparadas = mensaje.split(\",\");\n\nmsg.payload=partesseparadas[15];\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 540,
+        "y": 1600,
+        "wires": [
+            [
+                "b6c1c3a655a30509"
+            ]
+        ]
+    },
+    {
+        "id": "f91367559022d50f",
+        "type": "function",
+        "z": "7e17024ef9158e0d",
+        "name": "valor 16",
+        "func": "var mensaje = msg.payload;\nvar partesseparadas = mensaje.split(\",\");\n\nmsg.payload=partesseparadas[16];\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 540,
+        "y": 1640,
+        "wires": [
+            [
+                "b6c1c3a655a30509"
+            ]
+        ]
+    },
+    {
+        "id": "e0ccb39971147f5e",
+        "type": "function",
+        "z": "7e17024ef9158e0d",
+        "name": "valor 17",
+        "func": "var mensaje = msg.payload;\nvar partesseparadas = mensaje.split(\",\");\n\nmsg.payload=partesseparadas[17];\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 540,
+        "y": 1680,
+        "wires": [
+            [
+                "b6c1c3a655a30509"
+            ]
+        ]
+    },
+    {
+        "id": "e11dab61ad9bf3e8",
+        "type": "function",
+        "z": "7e17024ef9158e0d",
+        "name": "valor 18",
+        "func": "var mensaje = msg.payload;\nvar partesseparadas = mensaje.split(\",\");\n\nmsg.payload=partesseparadas[18];\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 540,
+        "y": 1720,
+        "wires": [
+            [
+                "b6c1c3a655a30509"
+            ]
+        ]
+    },
+    {
+        "id": "4831badaa423f38d",
+        "type": "function",
+        "z": "7e17024ef9158e0d",
+        "name": "valor 19",
+        "func": "var mensaje = msg.payload;\nvar partesseparadas = mensaje.split(\",\");\n\nmsg.payload=partesseparadas[19];\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 540,
+        "y": 1760,
+        "wires": [
+            [
+                "b6c1c3a655a30509"
+            ]
+        ]
+    },
+    {
+        "id": "8e68a576cdf8ad94",
+        "type": "function",
+        "z": "7e17024ef9158e0d",
+        "name": "valor 20",
+        "func": "var mensaje = msg.payload;\nvar partesseparadas = mensaje.split(\",\");\n\nmsg.payload=partesseparadas[20];\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 540,
+        "y": 1800,
+        "wires": [
+            [
+                "b6c1c3a655a30509"
+            ]
+        ]
+    },
+    {
+        "id": "839a1aaf36b5c244",
+        "type": "function",
+        "z": "7e17024ef9158e0d",
+        "name": "valor 21",
+        "func": "var mensaje = msg.payload;\nvar partesseparadas = mensaje.split(\",\");\n\nmsg.payload=partesseparadas[21];\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 540,
+        "y": 1840,
+        "wires": [
+            [
+                "b6c1c3a655a30509"
+            ]
+        ]
+    },
+    {
+        "id": "5021662a29420717",
+        "type": "function",
+        "z": "7e17024ef9158e0d",
+        "name": "valor 22",
+        "func": "var mensaje = msg.payload;\nvar partesseparadas = mensaje.split(\",\");\n\nmsg.payload=partesseparadas[22];\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 540,
+        "y": 1880,
+        "wires": [
+            [
+                "b6c1c3a655a30509"
+            ]
+        ]
+    },
+    {
+        "id": "3708311b7317d2d7",
+        "type": "function",
+        "z": "7e17024ef9158e0d",
+        "name": "valor 23",
+        "func": "var mensaje = msg.payload;\nvar partesseparadas = mensaje.split(\",\");\n\nmsg.payload=partesseparadas[23];\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 540,
+        "y": 1920,
+        "wires": [
+            [
+                "b6c1c3a655a30509"
+            ]
+        ]
+    },
+    {
+        "id": "23fe019d2a778cad",
+        "type": "function",
+        "z": "7e17024ef9158e0d",
+        "name": "valor 24",
+        "func": "var mensaje = msg.payload;\nvar partesseparadas = mensaje.split(\",\");\n\nmsg.payload=partesseparadas[24];\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 540,
+        "y": 1960,
+        "wires": [
+            [
+                "b6c1c3a655a30509"
+            ]
+        ]
+    },
+    {
+        "id": "9d062d351b88a7db",
+        "type": "function",
+        "z": "7e17024ef9158e0d",
+        "name": "valor 25",
+        "func": "var mensaje = msg.payload;\nvar partesseparadas = mensaje.split(\",\");\n\nmsg.payload=partesseparadas[25];\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 540,
+        "y": 2000,
+        "wires": [
+            [
+                "b6c1c3a655a30509"
+            ]
+        ]
+    },
+    {
+        "id": "ced19b618eddd0bd",
+        "type": "function",
+        "z": "7e17024ef9158e0d",
+        "name": "valor 26",
+        "func": "var mensaje = msg.payload;\nvar partesseparadas = mensaje.split(\",\");\n\nmsg.payload=partesseparadas[26];\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 540,
+        "y": 2040,
+        "wires": [
+            [
+                "b6c1c3a655a30509"
+            ]
+        ]
+    },
+    {
+        "id": "6c86d69b7240a80b",
+        "type": "function",
+        "z": "7e17024ef9158e0d",
+        "name": "valor 27",
+        "func": "var mensaje = msg.payload;\nvar partesseparadas = mensaje.split(\",\");\n\nmsg.payload=partesseparadas[27];\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 540,
+        "y": 2080,
+        "wires": [
+            [
+                "b6c1c3a655a30509"
+            ]
+        ]
+    },
+    {
+        "id": "bbd02139f9407ab6",
+        "type": "function",
+        "z": "7e17024ef9158e0d",
+        "name": "valor 28",
+        "func": "var mensaje = msg.payload;\nvar partesseparadas = mensaje.split(\",\");\n\nmsg.payload=partesseparadas[28];\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 540,
+        "y": 2120,
+        "wires": [
+            [
+                "b6c1c3a655a30509"
+            ]
+        ]
+    },
+    {
+        "id": "234fd110c0c59d67",
+        "type": "function",
+        "z": "7e17024ef9158e0d",
+        "name": "valor 29",
+        "func": "var mensaje = msg.payload;\nvar partesseparadas = mensaje.split(\",\");\n\nmsg.payload=partesseparadas[29];\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 540,
+        "y": 2160,
+        "wires": [
+            [
+                "b6c1c3a655a30509"
+            ]
+        ]
+    },
+    {
+        "id": "f5e486dd05407b58",
+        "type": "function",
+        "z": "7e17024ef9158e0d",
+        "name": "valor 30",
+        "func": "var mensaje = msg.payload;\nvar partesseparadas = mensaje.split(\",\");\n\nmsg.payload=partesseparadas[30];\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 540,
+        "y": 2200,
+        "wires": [
+            [
+                "b6c1c3a655a30509"
+            ]
+        ]
+    },
+    {
+        "id": "a17401f994b0ca5d",
+        "type": "function",
+        "z": "7e17024ef9158e0d",
+        "name": "valor 31",
+        "func": "var mensaje = msg.payload;\nvar partesseparadas = mensaje.split(\",\");\n\nmsg.payload=partesseparadas[31];\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 540,
+        "y": 2240,
+        "wires": [
+            [
+                "b6c1c3a655a30509"
+            ]
+        ]
+    },
+    {
+        "id": "90e68f847a9f9dee",
+        "type": "function",
+        "z": "7e17024ef9158e0d",
+        "name": "valor 32",
+        "func": "var mensaje = msg.payload;\nvar partesseparadas = mensaje.split(\",\");\n\nmsg.payload=partesseparadas[32];\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 540,
+        "y": 2280,
+        "wires": [
+            [
+                "b6c1c3a655a30509"
+            ]
+        ]
+    },
+    {
+        "id": "35f9677a1db5be86",
+        "type": "function",
+        "z": "7e17024ef9158e0d",
+        "name": "valor 33",
+        "func": "var mensaje = msg.payload;\nvar partesseparadas = mensaje.split(\",\");\n\nmsg.payload=partesseparadas[33];\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 540,
+        "y": 2320,
+        "wires": [
+            [
+                "b6c1c3a655a30509"
+            ]
+        ]
+    },
+    {
+        "id": "40bbcb82da37b808",
+        "type": "function",
+        "z": "7e17024ef9158e0d",
+        "name": "valor 34",
+        "func": "var mensaje = msg.payload;\nvar partesseparadas = mensaje.split(\",\");\n\nmsg.payload=partesseparadas[34];\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 540,
+        "y": 2360,
+        "wires": [
+            [
+                "b6c1c3a655a30509"
+            ]
+        ]
+    },
+    {
+        "id": "196211021d1b069f",
+        "type": "function",
+        "z": "7e17024ef9158e0d",
+        "name": "valor 35",
+        "func": "var mensaje = msg.payload;\nvar partesseparadas = mensaje.split(\",\");\n\nmsg.payload=partesseparadas[35];\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 540,
+        "y": 2400,
+        "wires": [
+            [
+                "b6c1c3a655a30509"
+            ]
+        ]
+    },
+    {
+        "id": "973def211a322452",
+        "type": "function",
+        "z": "7e17024ef9158e0d",
+        "name": "valor 36",
+        "func": "var mensaje = msg.payload;\nvar partesseparadas = mensaje.split(\",\");\n\nmsg.payload=partesseparadas[36];\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 540,
+        "y": 2440,
+        "wires": [
+            [
+                "b6c1c3a655a30509"
+            ]
+        ]
+    },
+    {
+        "id": "4bcc03cc48c05383",
+        "type": "function",
+        "z": "7e17024ef9158e0d",
+        "name": "valor 37",
+        "func": "var mensaje = msg.payload;\nvar partesseparadas = mensaje.split(\",\");\n\nmsg.payload=partesseparadas[37];\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 540,
+        "y": 2480,
+        "wires": [
+            [
+                "b6c1c3a655a30509"
+            ]
+        ]
+    },
+    {
+        "id": "aede3efabdba1767",
+        "type": "function",
+        "z": "7e17024ef9158e0d",
+        "name": "valor 38",
+        "func": "var mensaje = msg.payload;\nvar partesseparadas = mensaje.split(\",\");\n\nmsg.payload=partesseparadas[38];\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 540,
+        "y": 2520,
+        "wires": [
+            [
+                "b6c1c3a655a30509"
+            ]
+        ]
+    },
+    {
+        "id": "b6d18059d81347f7",
+        "type": "function",
+        "z": "7e17024ef9158e0d",
+        "name": "valor 39",
+        "func": "var mensaje = msg.payload;\nvar partesseparadas = mensaje.split(\",\");\n\nmsg.payload=partesseparadas[39];\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 540,
+        "y": 2560,
+        "wires": [
+            [
+                "b6c1c3a655a30509"
+            ]
+        ]
+    },
+    {
+        "id": "a69b710b413ca2b9",
+        "type": "function",
+        "z": "7e17024ef9158e0d",
+        "name": "valor 40",
+        "func": "var mensaje = msg.payload;\nvar partesseparadas = mensaje.split(\",\");\n\nmsg.payload=partesseparadas[40];\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 540,
+        "y": 2600,
+        "wires": [
+            [
+                "b6c1c3a655a30509",
+                "c574317d878dfea7"
+            ]
+        ]
+    },
+    {
+        "id": "3606c401a77b6ef0",
+        "type": "comment",
+        "z": "7e17024ef9158e0d",
+        "name": "vector, como variable global",
+        "info": "",
+        "x": 300,
+        "y": 1020,
+        "wires": []
+    },
+    {
+        "id": "1ff40b8eca6f70f2",
+        "type": "ui_text",
+        "z": "7e17024ef9158e0d",
+        "group": "ec3e2daebca58018",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "vector sin tratar:",
+        "format": "{{msg.payload}}",
+        "layout": "row-left",
+        "className": "",
+        "x": 160,
+        "y": 1560,
+        "wires": []
+    },
+    {
+        "id": "fab89aeae407f2a1",
+        "type": "ui_text",
+        "z": "7e17024ef9158e0d",
+        "group": "5952e15115c22fe1",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "vector luego tratar:",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 830,
+        "y": 1280,
+        "wires": []
+    },
+    {
+        "id": "cdc9896ba9ad50c1",
+        "type": "ui_text",
+        "z": "7e17024ef9158e0d",
+        "group": "246ac2883089024e",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "modelo aparato:",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 800,
+        "y": 940,
+        "wires": []
+    },
+    {
+        "id": "6afc3d853c9bac4a",
+        "type": "ui_text",
+        "z": "7e17024ef9158e0d",
+        "group": "7d03c4700b2e504f",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "fecha y horario mensaje recibido por node-red:",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 920,
+        "y": 980,
+        "wires": []
+    },
+    {
+        "id": "c574317d878dfea7",
+        "type": "ui_text",
+        "z": "7e17024ef9158e0d",
+        "group": "15f6949154ee62c3",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Pra saber si equipo tiene Alarma Activada (1-Sí, 0-No):",
+        "format": "{{msg.payload}}",
+        "layout": "row-left",
+        "className": "",
+        "x": 940,
+        "y": 2180,
+        "wires": []
+    },
+    {
+        "id": "d1127e30604477d2",
+        "type": "ui_text",
+        "z": "7e17024ef9158e0d",
+        "group": "f389f014df638db1",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Seteos y Mediciones recibidos aparato:",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 980,
+        "y": 1180,
+        "wires": []
+    },
+    {
+        "id": "4824b081991be2fe",
+        "type": "debug",
+        "z": "7e17024ef9158e0d",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 250,
+        "y": 1340,
+        "wires": []
+    },
+    {
+        "id": "939324437392b999",
+        "type": "debug",
+        "z": "7e17024ef9158e0d",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 550,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "8e6a953b2d29a5b4",
+        "type": "arp",
+        "z": "7e17024ef9158e0d",
+        "name": "ARP",
+        "macs": "",
+        "x": 330,
+        "y": 140,
+        "wires": [
+            [
+                "939324437392b999",
+                "165b5857cff491b8"
+            ]
+        ]
+    },
+    {
+        "id": "165b5857cff491b8",
+        "type": "ui_text",
+        "z": "7e17024ef9158e0d",
+        "group": "6c3eaa11bb566c24",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "text",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 510,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "bb183573bb8dbc32",
+        "type": "hostip",
+        "z": "7e17024ef9158e0d",
+        "name": "Host IP",
+        "x": 340,
+        "y": 60,
+        "wires": [
+            [
+                "939324437392b999"
+            ]
+        ]
+    },
+    {
+        "id": "4595cc1a3a9eb162",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "192.168.0.54",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "sessionExpiry": ""
+    },
+    {
+        "id": "ec3e2daebca58018",
+        "type": "ui_group",
+        "name": "vector crudo",
+        "tab": "da1753616a26717b",
+        "order": 1,
+        "disp": true,
+        "width": "20",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "5952e15115c22fe1",
+        "type": "ui_group",
+        "name": "vector tratado",
+        "tab": "da1753616a26717b",
+        "order": 2,
+        "disp": true,
+        "width": "20",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "246ac2883089024e",
+        "type": "ui_group",
+        "name": "dato equipo",
+        "tab": "da1753616a26717b",
+        "order": 3,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "7d03c4700b2e504f",
+        "type": "ui_group",
+        "name": "dato fecha hora",
+        "tab": "da1753616a26717b",
+        "order": 4,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "15f6949154ee62c3",
+        "type": "ui_group",
+        "name": "En Alarma",
+        "tab": "da1753616a26717b",
+        "order": 5,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "f389f014df638db1",
+        "type": "ui_group",
+        "name": "valores seteados y medidos",
+        "tab": "da1753616a26717b",
+        "order": 6,
+        "disp": true,
+        "width": 20,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "6c3eaa11bb566c24",
+        "type": "ui_group",
+        "name": "red:",
+        "tab": "da1753616a26717b",
+        "order": 7,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "da1753616a26717b",
+        "type": "ui_tab",
+        "name": "tercero",
+        "icon": "dashboard",
+        "order": 5,
+        "disabled": false,
+        "hidden": false
+    }
+]
