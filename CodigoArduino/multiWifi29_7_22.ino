@@ -9,19 +9,20 @@ void setup()
   Serial.begin(115200);
   Serial.println();
 
+  
+  wifiMulti.addAP("MERCUSYS_E248", "matiasmartin415");
   wifiMulti.addAP("Speedy-F8CA84", "2064421248");
   wifiMulti.addAP("TeleCentro-0522", "KTZWUJZ3EWMM");
-  wifiMulti.addAP("MERCUSYS_E248", "matiasmartin415");
 }
 
 void monitorWifi()
 {
   if(wifiMulti.run()!=WL_CONNECTED)
   {
-    if(cennectionWasAlive==true)
+    if(connectionWasAlive==true)
     {
       connectionWasAlive=false;
-      Seral.print("Looking for Wifi");
+      Serial.print("Looking for Wifi");
     }
     Serial.print(".");
     delay(500);
@@ -29,7 +30,8 @@ void monitorWifi()
   else if(connectionWasAlive==false)
   {
     connectionWasAlive=true;
-    Serial.printf("connected to %s",WiFi.SSID.c_str());
+//   Serial.printf("connected to %s", WiFi.SSID.c_str());
+Serial.printf("connected to %s", WiFi.SSID());
   }
 }
 
